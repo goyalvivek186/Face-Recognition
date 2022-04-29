@@ -35,7 +35,7 @@ while True:
 			Id="Unknown"
 			print (Id)
 		cv2.putText(im, str(Id), (x, y+h), fontface, fontscale, fontcolor)
-		cv2.putText(im, "Confidence: "+ str(round(conf, 2)), (x, y+h+100), fontface, fontscale, fontcolor)
+		#cv2.putText(im, "Confidence: "+ str(round(conf, 2)), (x, y+h+100), fontface, fontscale, fontcolor)
 		#cv2.putText(im, str(Id), (x,y+h), fontface, fontscale, fontcolor) 
 	
 	cv2.imshow('im',im)

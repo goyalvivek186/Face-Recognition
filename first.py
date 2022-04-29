@@ -9,7 +9,7 @@ from PIL import Image
 cam = cv2.VideoCapture(0)
 detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-max_count = 500
+max_count = 50
 
 Id = int(input("Enter your Id "))
 s = ''
@@ -84,4 +84,4 @@ while(True):
 cam.release()
 cv2.destroyAllWindows()
 
-# import trainer
+import trainer
