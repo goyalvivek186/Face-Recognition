@@ -1,3 +1,7 @@
+#CV2 = computer vision-> Images, Video 
+#Os = System library-> system Cmd working
+#PIL = Pillow lib-> Image processing
+
 import cv2,os
 import numpy as np
 from PIL import Image
@@ -6,7 +10,7 @@ cam = cv2.VideoCapture(0)
 detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 
-Id = input("Enter your Id")
+Id = input("Enter your Id ")
 s = ''
 flag = False
 r = open("Mapping.txt",'r')
@@ -20,7 +24,7 @@ for a in r.read():
 r.close()
 
 while True:
-	Name = raw_input("Enter your name")
+	Name = input("Enter your name ")
 	if flag == False:
 		break
 	if flag == True and Name == s:
@@ -33,23 +37,23 @@ if flag == False:
 
 low = 0
 if flag == True:
-	imgs = os.listdir('dataSet')
+	imgs = os.listdir('dataSet')	#images = array of names
 	low = -1
 	for img in imgs:
-		print img
+		print (img)
 		n = int(img.split(".")[1])
-		print n
+		print (n)
 
 		if n == Id:
-			print "Hello"
+			print ("Hello")
 			x = int(img.split(".")[2])
-			print x
+			print (x)
 			if x>low:
 				low = x
-				print low
+				print (low)
 
 sampleNum = low
-print sampleNum
+print (sampleNum)
 count = 0
 
 while(True):
@@ -60,7 +64,7 @@ while(True):
 		cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
 		sampleNum = sampleNum + 1
 		count = count + 1
-		print sampleNum
+		print (sampleNum)
 		cv2.imwrite("dataSet/"+Name+"."+str(Id)+'.'+str(sampleNum)+".jpg",gray[y:y+h,x:x+w])
 		cv2.imshow('frame',img)
 	if cv2.waitKey(100) & 0xFF == ord('q'):

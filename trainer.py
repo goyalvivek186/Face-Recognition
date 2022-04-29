@@ -14,12 +14,12 @@ def getImagesAndLabels(path):
 	for imagePath in imagePaths:
 		pilImage=Image.open(imagePath).convert('L')
 		imageNp=np.array(pilImage,'uint8')
-		print "Complete path is ",imagePath
-		print "Path is ",os.path.split(imagePath)
+		print ("Complete path is ",imagePath)
+		print ("Path is ",os.path.split(imagePath))
 		test=(os.path.split(imagePath)[-1])
-		print "Test is ",test
+		print ("Test is ",test)
 		Id=int(test.split(".")[1])
-		print "Id is ",Id
+		print ("Id is ",Id)
 		faces = detector.detectMultiScale(imageNp,1.3,5)
 		for (x,y,w,h) in faces:
 			faceSamples.append(imageNp[y:y+h,x:x+w])

@@ -29,10 +29,10 @@ while True:
 				if a == str(Id):
 					flag = True
 			Id = s
-			print Id
+			print (Id)
 		else:
 			Id="Unknown"
-			print Id
+			print (Id)
 		cv2.putText(im, str(Id), (x,y+h), fontface, fontscale, fontcolor) 
 	
 	cv2.imshow('im',im)
