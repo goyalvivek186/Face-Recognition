@@ -3,10 +3,11 @@ import numpy as np
 from PIL import Image
 
 # cv2.face.LBPHFaceRecognizer_create()
-recognizer = cv2.face.LBPHFaceRecognizer_create()
+recognizer = cv2.face.LBPHFaceRecognizer_create()	#recognizing model
 detector = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
 def getImagesAndLabels(path):
+	#array of paths of images
 	imagePaths=[os.path.join(path,f) for f in os.listdir(path)]
 	faceSamples = []
 	Ids=[]
@@ -20,12 +21,16 @@ def getImagesAndLabels(path):
 		print ("Test is ",test)
 		Id=int(test.split(".")[1])
 		print ("Id is ",Id)
-		faces = detector.detectMultiScale(imageNp,1.3,5)
+
+		faces = detector.detectMultiScale(imageNp,1.3,5)	#detect face 
 		for (x,y,w,h) in faces:
 			faceSamples.append(imageNp[y:y+h,x:x+w])
 			Ids.append(Id)
+	# print(Ids)
 	return faceSamples,Ids
 
 faces,Ids = getImagesAndLabels('dataSet')
 recognizer.train(faces,np.array(Ids))
 recognizer.save('trainer/trainer.yml')
+
+import detector
